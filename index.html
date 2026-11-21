@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasir Sohad Studio</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sohadstudio/Aset-File-Sohad-Digital/main/Favicon.png" />
-    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,9 +23,7 @@
             }
         }
     </script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js untuk Grafik Statistik Penjualan -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         html, body {
@@ -51,7 +47,6 @@
             background: #94a3b8;
         }
 
-        /* Styling Khusus Preview Nota A6 */
         .nota-sohad {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #000000;
@@ -101,7 +96,6 @@
             margin: 0;
         }
 
-        /* Pengaturan Cetak Presisi A6 */
         @media print {
             * {
                 -webkit-print-color-adjust: exact !important;
@@ -289,16 +283,11 @@
                     <input type="text" id="searchProduct" oninput="filterProducts()" placeholder="Cari layanan atau kode SKU (contoh: Print, PRN-001)..." class="w-full bg-gray-50 border border-gray-300 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
                 </div>
 
-                <!-- Category Tabs (Auto-updated from Sheet + Default) -->
-                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="categoryTabs">
-                    <!-- Injected via JS -->
-                </div>
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="categoryTabs"></div>
             </div>
 
             <!-- Product Grid Cards -->
-            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
-                <!-- Injected via JavaScript -->
-            </div>
+            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5"></div>
 
         </div>
 
@@ -306,7 +295,6 @@
         <div class="w-full lg:w-fit lg:shrink-0 flex flex-col lg:sticky lg:top-20">
             <div class="bg-slate-200 rounded-xl shadow-lg border border-gray-300 overflow-hidden flex flex-col">
                 
-                <!-- Receipt Preview Header Bar -->
                 <div class="bg-brand text-white px-4 py-2.5 flex justify-between items-center text-xs font-semibold gap-2">
                     <span class="flex items-center"><i class="fa-solid fa-receipt mr-2"></i> Preview Struk / Nota</span>
                     <button onclick="simpanTransaksiKeRiwayat(true)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-md text-[11px] transition flex items-center gap-1 shadow-xs" title="Simpan ke Riwayat Penjualan">
@@ -314,23 +302,18 @@
                     </button>
                 </div>
 
-                <!-- Badge Info Jika Sedang Memuat / Mengedit Nota Lama -->
                 <div id="loadedInvoiceBanner" class="hidden bg-amber-100 border-b border-amber-300 text-amber-900 px-4 py-1.5 text-[11px] font-bold flex items-center justify-between">
                     <span><i class="fa-solid fa-file-invoice mr-1"></i> Edit Nota: <span id="loadedInvoiceIdText">-</span></span>
                     <button onclick="buatNotaBaruDariBanner()" class="underline hover:text-black">Nota Baru</button>
                 </div>
 
-                <!-- Printable Receipt Sheet Container -->
                 <div class="p-4 sm:p-5 overflow-x-auto flex justify-center items-center">
                     <div class="nota-sohad" id="notaA6" style="padding-top: 7mm;">
-                        <!-- Baris Atas: Logo Toko Kiri & Data Pembeli Kanan -->
                         <div class="flex justify-between items-start pb-1">                            
-                            <!-- Logo Toko Presisi Kiri -->
                             <div class="w-7/12 flex flex-col items-start justify-center pr-2">
                                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBEd1myU535eMP43R6hQC5xmtsXdKRTIELytaKhDTP0LIgScqQxkzorm8lRFVlzzf99G9VqdLcwcfIcWRK56lnyE1CG3BjtfWOtRb-WEEMJbJDe5UjktGxRBA4JYDZkc9yz7ePB3doYwTgT6ZMWt6lmTgY2Dh5YhQbSS34x2_twixBPYTl-oYQxGJ9i_Q/s1600/Logo%20Nota.png" alt="Logo Sohad Studio" style="height: 37px !important; width: auto !important; max-width: 100% !important; max-height: none !important;" class="block object-contain object-left">
                             </div>
 
-                            <!-- Info Pelanggan Kanan -->
                             <div style="margin-top: -5px !important;" class="w-5/12 text-[7pt] sm:text-[7.5pt] font-normal space-y-1">
                                 <div class="flex items-end leading-none">
                                     <span class="w-10 sm:w-12">a.n.</span>
@@ -350,7 +333,6 @@
                             </div>
                         </div>
 
-                        <!-- Nomor Invoice / Nota -->
                         <div class="flex items-center justify-between border-t border-b border-black py-0.5 px-1 mt-1 text-[7.5pt] font-extrabold bg-gray-100">
                             <span>NO. INVOICE / NOTA</span>
                             <span id="previewInvoiceNo" class="tracking-wider font-extrabold">SHD-261118-0001</span>
@@ -368,7 +350,6 @@
                             <tbody id="notaTableBody"></tbody>
                         </table>
 
-                        <!-- Ringkasan Total & Status Lunas / DP -->
                         <div class="mt-1.5 space-y-1">
                             <div class="flex justify-between items-center">
                                 <div id="previewStatusBadge" class="border border-black rounded px-2 py-0.5 text-[7.5pt] font-extrabold uppercase tracking-wide bg-gray-100">
@@ -382,7 +363,6 @@
                                 </div>
                             </div>
 
-                            <!-- Baris Rincian DP & Sisa (Muncul otomatis jika status DP) -->
                             <div id="previewDPBox" class="hidden border border-black rounded px-2 py-1 bg-gray-50 text-[7.5pt] font-extrabold space-y-0.5">
                                 <div class="flex justify-between">
                                     <span>DP / DIBAYAR</span>
@@ -415,7 +395,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Bottom Action Bar inside Preview Card -->
                 <div class="bg-slate-300/70 px-4 py-2.5 border-t border-gray-300 flex items-center justify-between gap-2 text-xs">
                     <button onclick="simpanDanBaru()" class="flex-1 bg-brand hover:bg-gray-800 text-white font-bold py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
                         <i class="fa-solid fa-check-double text-emerald-400"></i> Simpan & Transaksi Baru
@@ -430,12 +409,10 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 mt-12 py-6 text-center text-xs text-gray-500">
         <p>© 2026 Sohad Studio. All Rights Reserved.</p>
     </footer>
-
-    <!-- MODAL 1: RIWAYAT TRANSAKSI & ARSIP NOTA -->
+<!-- MODAL 1: RIWAYAT TRANSAKSI & ARSIP NOTA -->
     <div id="modalRiwayat" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white w-full max-w-6xl max-h-[92vh] rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
             
@@ -497,9 +474,7 @@
             <div class="flex-1 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
                 
                 <!-- Left: Daftar Transaksi -->
-                <div id="riwayatListContainer" class="lg:col-span-7 p-3 sm:p-4 space-y-2.5 overflow-y-auto max-h-[55vh] lg:max-h-none">
-                    <!-- Injected via JS -->
-                </div>
+                <div id="riwayatListContainer" class="lg:col-span-7 p-3 sm:p-4 space-y-2.5 overflow-y-auto max-h-[55vh] lg:max-h-none"></div>
 
                 <!-- Right: Detail Nota Terpilih -->
                 <div id="riwayatDetailContainer" class="lg:col-span-5 p-4 bg-slate-50 flex flex-col justify-between overflow-y-auto">
@@ -593,7 +568,6 @@
 
                 <!-- Charts Grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                    <!-- Main Sales Trend Chart -->
                     <div class="lg:col-span-8 bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex flex-col">
                         <div class="flex items-center justify-between mb-3">
                             <div>
@@ -610,7 +584,6 @@
                         </div>
                     </div>
 
-                    <!-- Category Breakdown Doughnut Chart -->
                     <div class="lg:col-span-4 bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex flex-col">
                         <div class="mb-3">
                             <h4 class="font-extrabold text-sm text-gray-800">Omzet per Kategori</h4>
@@ -639,9 +612,7 @@
                                     <th class="px-4 py-2.5 text-right">Total Omzet</th>
                                 </tr>
                             </thead>
-                            <tbody id="topProductsTableBody" class="divide-y divide-gray-100">
-                                <!-- Injected via JS -->
-                            </tbody>
+                            <tbody id="topProductsTableBody" class="divide-y divide-gray-100"></tbody>
                         </table>
                     </div>
                 </div>
@@ -668,7 +639,7 @@
             { id: 'CPY-001', sku: 'CPY-001', name: 'Fotokopi A4', category: 'Percetakan', price: 300, stock: 1000 },
             { id: 'ATK-001', sku: 'ATK-001', name: 'Pulpen Gel Hitam', category: 'ATK', price: 3500, stock: 50 },
             { id: 'ATK-002', sku: 'ATK-002', name: 'Map Plastik Kancing', category: 'ATK', price: 4000, stock: 40 },
-            { id: 'DIG-001', sku: 'DIG-001', name: 'Undangan Digital Custom', category: 'Jasa Digital', price: 75000, stock: 99 }
+            { id: 'DIG-001', sku: 'DIG-001', name: 'Undangan Digital Custom', category: 'Jasa Digital', price: 75000, stock: null }
         ];
 
         let products = JSON.parse(localStorage.getItem(PRODUCT_STORAGE_KEY)) || defaultProduk;
@@ -678,17 +649,13 @@
         let cart = {};
         let customItemCounter = 1000;
 
-        /* State Pelacakan Nota Aktif & Pencegahan Duplikat */
         let currentDraftInvoiceId = '';
         let activeLoadedInvoiceId = null;
         let lastSavedSignature = '';
         let selectedRiwayatId = null;
         let riwayatStatusFilter = 'ALL';
-
-        /* State Status Pembayaran (LUNAS / DP) */
         let paymentStatusMode = 'LUNAS';
 
-        /* Instance Chart.js */
         let salesTrendChartInstance = null;
         let categoryDoughnutChartInstance = null;
         let currentTrendChartType = 'bar';
@@ -715,16 +682,9 @@
             return APPS_SCRIPT_URL && APPS_SCRIPT_URL.startsWith('https://');
         }
 
-        /* =========================================================
-           NOMOR INVOICE / NOTA OTOMATIS
-           ========================================================= */
-
         function generateInvoiceId() {
             const dateInput = document.getElementById('inputDate') ? document.getElementById('inputDate').value.trim() : '';
-            let yy = '';
-            let mm = '';
-            let dd = '';
-
+            let yy = '', mm = '', dd = '';
             const parts = dateInput.split('/');
             if (parts.length === 3 && parts[2].length === 4) {
                 dd = parts[0].padStart(2, '0');
@@ -736,35 +696,24 @@
                 mm = String(now.getMonth() + 1).padStart(2, '0');
                 dd = String(now.getDate()).padStart(2, '0');
             }
-
             const rand = Math.floor(1000 + Math.random() * 9000);
             return `SHD-${yy}${mm}${dd}-${rand}`;
         }
 
         function getActiveInvoiceId() {
             if (activeLoadedInvoiceId) return activeLoadedInvoiceId;
-            if (!currentDraftInvoiceId) {
-                currentDraftInvoiceId = generateInvoiceId();
-            }
+            if (!currentDraftInvoiceId) currentDraftInvoiceId = generateInvoiceId();
             return currentDraftInvoiceId;
         }
 
         function handleDateInputChange() {
-            if (!activeLoadedInvoiceId) {
-                currentDraftInvoiceId = generateInvoiceId();
-            }
+            if (!activeLoadedInvoiceId) currentDraftInvoiceId = generateInvoiceId();
             updateReceiptHeader();
         }
 
-        /* =========================================================
-           LOGIKA STATUS PEMBAYARAN: LUNAS vs DP / KURANG
-           ========================================================= */
-
         function hitungGrandTotal() {
             let total = 0;
-            for (let key in cart) {
-                total += (cart[key].price * cart[key].qty);
-            }
+            for (let key in cart) total += (cart[key].price * cart[key].qty);
             return total;
         }
 
@@ -798,20 +747,12 @@
 
         function getPaymentSummary(grandTotal) {
             if (paymentStatusMode === 'LUNAS') {
-                return {
-                    status: 'LUNAS',
-                    paidAmount: grandTotal,
-                    remainingAmount: 0
-                };
+                return { status: 'LUNAS', paidAmount: grandTotal, remainingAmount: 0 };
             }
             let rawDP = parseFloat(document.getElementById('inputDPAmount').value) || 0;
             if (rawDP < 0) rawDP = 0;
             if (grandTotal > 0 && rawDP >= grandTotal) {
-                return {
-                    status: 'LUNAS',
-                    paidAmount: grandTotal,
-                    remainingAmount: 0
-                };
+                return { status: 'LUNAS', paidAmount: grandTotal, remainingAmount: 0 };
             }
             return {
                 status: 'DP',
@@ -820,10 +761,6 @@
             };
         }
 
-        /* =========================================================
-           IMPORT KONTAK & SYNC GOOGLE SHEETS (FETCH API)
-           ========================================================= */
-
         async function imporKontakWA() {
             if ('contacts' in navigator && 'ContactsManager' in window) {
                 try {
@@ -831,11 +768,8 @@
                     if (contacts && contacts.length > 0) {
                         if (contacts[0].tel && contacts[0].tel.length > 0) {
                             let telp = contacts[0].tel[0].replace(/[^0-9+]/g, '');
-                            if (telp.startsWith('+62')) {
-                                telp = '0' + telp.slice(3);
-                            } else if (telp.startsWith('62')) {
-                                telp = '0' + telp.slice(2);
-                            }
+                            if (telp.startsWith('+62')) telp = '0' + telp.slice(3);
+                            else if (telp.startsWith('62')) telp = '0' + telp.slice(2);
                             document.getElementById('inputPhone').value = telp;
                         }
                         if (contacts[0].name && contacts[0].name.length > 0 && !document.getElementById('inputName').value.trim()) {
@@ -857,9 +791,7 @@
                 if (manualClick) showToast('URL Apps Script belum diisi di kode.', 'error');
                 return;
             }
-            if (manualClick) {
-                showToast('Menyinkronkan SKU & stok dari Google Sheets...');
-            }
+            if (manualClick) showToast('Menyinkronkan SKU & stok dari Google Sheets...');
 
             try {
                 const res = await fetch(`${APPS_SCRIPT_URL}?action=getProduk`);
@@ -869,17 +801,13 @@
                     localStorage.setItem(PRODUCT_STORAGE_KEY, JSON.stringify(products));
                     renderCategoryTabs();
                     renderProducts();
-                    if (manualClick) {
-                        showToast('Sinkronisasi stok berhasil! (' + json.data.length + ' produk)');
-                    }
+                    if (manualClick) showToast('Sinkronisasi stok berhasil! (' + json.data.length + ' produk)');
                 } else if (manualClick) {
                     showToast(json.message || 'Data produk di Sheet masih kosong.', 'error');
                 }
             } catch (err) {
                 console.error(err);
-                if (manualClick) {
-                    showToast('Gagal mengambil data produk dari Google Sheets.', 'error');
-                }
+                if (manualClick) showToast('Gagal mengambil data produk dari Google Sheets.', 'error');
             }
         }
 
@@ -888,15 +816,12 @@
                 if (manualClick) showToast('URL Apps Script belum diisi di kode.', 'error');
                 return;
             }
-            if (manualClick) {
-                showToast('Menarik riwayat nota dari Google Sheets...');
-            }
+            if (manualClick) showToast('Menarik riwayat nota dari Google Sheets...');
 
             try {
                 const res = await fetch(`${APPS_SCRIPT_URL}?action=getRiwayat`);
                 const json = await res.json();
                 if (json.status === 'ok' && Array.isArray(json.data)) {
-                    // Gabungkan metadata lokal (no WA, status DP) jika ID nota cocok
                     const localMap = {};
                     salesHistory.forEach(item => { localMap[item.id] = item; });
 
@@ -923,19 +848,13 @@
 
                     if (!document.getElementById('modalRiwayat').classList.contains('hidden')) {
                         renderRiwayatList();
-                        if (selectedRiwayatId) {
-                            selectRiwayatDetail(selectedRiwayatId);
-                        }
+                        if (selectedRiwayatId) selectRiwayatDetail(selectedRiwayatId);
                     }
-                    if (manualClick) {
-                        showToast(`Sinkronisasi selesai! (${salesHistory.length} nota di Sheet)`);
-                    }
+                    if (manualClick) showToast(`Sinkronisasi selesai! (${salesHistory.length} nota di Sheet)`);
                 }
             } catch (err) {
                 console.error(err);
-                if (manualClick) {
-                    showToast('Gagal menarik data riwayat dari Google Sheets.', 'error');
-                }
+                if (manualClick) showToast('Gagal menarik data riwayat dari Google Sheets.', 'error');
             }
         }
 
@@ -947,10 +866,7 @@
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'saveRiwayat', data: txData })
             }).then(() => {
-                // Tarik ulang stok terbaru setelah Sheet menghitung rumus pengurangan stok
-                setTimeout(() => {
-                    ambilStokDariSheet(false);
-                }, 1800);
+                setTimeout(() => { ambilStokDariSheet(false); }, 1800);
             }).catch(err => console.error('Gagal simpan ke Sheet:', err));
         }
 
@@ -962,15 +878,9 @@
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'deleteRiwayat', id: invoiceId })
             }).then(() => {
-                setTimeout(() => {
-                    ambilStokDariSheet(false);
-                }, 1800);
+                setTimeout(() => { ambilStokDariSheet(false); }, 1800);
             }).catch(err => console.error('Gagal hapus di Sheet:', err));
         }
-
-        /* =========================================================
-           KATALOG PRODUK (DENGAN SKU & STOK) & KERANJANG
-           ========================================================= */
 
         function renderCategoryTabs() {
             const container = document.getElementById('categoryTabs');
@@ -978,10 +888,7 @@
 
             const dynamicCats = [...new Set(products.map(p => p.category).filter(Boolean))];
             const categories = ['Semua', ...dynamicCats];
-
-            if (!categories.includes(currentCategory)) {
-                currentCategory = 'Semua';
-            }
+            if (!categories.includes(currentCategory)) currentCategory = 'Semua';
 
             container.innerHTML = categories.map(cat => {
                 const isActive = cat.toLowerCase() === currentCategory.toLowerCase();
@@ -1017,16 +924,19 @@
                 const prodKey = String(product.id);
                 const qty = cart[prodKey] ? cart[prodKey].qty : 0;
                 const skuLabel = product.sku || prodKey;
-                const hasStockInfo = typeof product.stock === 'number' && !isNaN(product.stock);
+                const isJasa = (product.category || '').toLowerCase().includes('jasa') || product.stock === null || product.stock === 'Unlimited';
+                const hasStockInfo = !isJasa && typeof product.stock === 'number' && !isNaN(product.stock);
                 const sisaStok = hasStockInfo ? product.stock : null;
                 const isOutOfStock = hasStockInfo && sisaStok <= 0;
                 const isMaxReached = hasStockInfo && qty >= sisaStok;
 
                 let stockBadgeHtml = '';
-                if (hasStockInfo) {
+                if (isJasa) {
+                    stockBadgeHtml = `<span class="bg-indigo-50 text-indigo-700 border border-indigo-200 font-extrabold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded"><i class="fa-solid fa-infinity mr-0.5"></i> Unlimited</span>`;
+                } else if (hasStockInfo) {
                     if (sisaStok <= 0) {
                         stockBadgeHtml = `<span class="bg-red-100 text-red-700 border border-red-200 font-extrabold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Habis (0)</span>`;
-                    } else if (sisaStok <= 10) {
+                    } else if (sisaStok <= 5) {
                         stockBadgeHtml = `<span class="bg-amber-100 text-amber-800 border border-amber-200 font-extrabold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Stok: ${sisaStok}</span>`;
                     } else {
                         stockBadgeHtml = `<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Stok: ${sisaStok}</span>`;
@@ -1035,9 +945,7 @@
                 
                 const card = document.createElement('div');
                 card.className = `bg-white rounded-xl shadow-sm border p-3 sm:p-3.5 flex flex-col justify-between transition ${isOutOfStock ? 'opacity-60 border-red-200 cursor-not-allowed' : 'hover:shadow-md cursor-pointer'} ${qty > 0 ? 'border-brand bg-slate-50' : 'border-gray-200'}`;
-                card.onclick = () => {
-                    if (!isOutOfStock) changeQty(prodKey, 1);
-                };
+                card.onclick = () => { if (!isOutOfStock) changeQty(prodKey, 1); };
 
                 const safeIdArg = `'${prodKey.replace(/'/g, "\\'")}'`;
 
@@ -1070,7 +978,8 @@
             const product = products.find(p => String(p.id) === key);
             if (!product) return;
 
-            const hasStockInfo = typeof product.stock === 'number' && !isNaN(product.stock);
+            const isJasa = (product.category || '').toLowerCase().includes('jasa') || product.stock === null || product.stock === 'Unlimited';
+            const hasStockInfo = !isJasa && typeof product.stock === 'number' && !isNaN(product.stock);
             const currentQty = cart[key] ? cart[key].qty : 0;
 
             if (delta > 0 && hasStockInfo && (currentQty + delta) > product.stock) {
@@ -1090,9 +999,7 @@
                 }
             } else {
                 cart[key].qty += delta;
-                if (cart[key].qty <= 0) {
-                    delete cart[key];
-                }
+                if (cart[key].qty <= 0) delete cart[key];
             }
             renderProducts();
             renderReceipt();
@@ -1101,7 +1008,6 @@
         function addCustomItem() {
             const nameInput = document.getElementById('customItemName');
             const priceInput = document.getElementById('customItemPrice');
-            
             const name = nameInput.value.trim();
             const price = parseFloat(priceInput.value) || 0;
 
@@ -1121,7 +1027,6 @@
 
             nameInput.value = '';
             priceInput.value = '';
-
             renderProducts();
             renderReceipt();
             showToast('Item custom berhasil ditambahkan!');
@@ -1150,24 +1055,18 @@
         }
 
         function updateReceiptHeader() {
-            const name = document.getElementById('inputName').value.trim();
-            const phone = document.getElementById('inputPhone').value.trim();
-            const date = document.getElementById('inputDate').value.trim();
-
-            document.getElementById('previewAN').innerText = name || '';
-            document.getElementById('previewWA').innerText = phone || '';
-            document.getElementById('previewTgl').innerText = date || '';
+            document.getElementById('previewAN').innerText = document.getElementById('inputName').value.trim() || '';
+            document.getElementById('previewWA').innerText = document.getElementById('inputPhone').value.trim() || '';
+            document.getElementById('previewTgl').innerText = document.getElementById('inputDate').value.trim() || '';
             document.getElementById('previewInvoiceNo').innerText = getActiveInvoiceId();
         }
 
         function renderReceipt() {
             const tbody = document.getElementById('notaTableBody');
             tbody.innerHTML = '';
-
             document.getElementById('previewInvoiceNo').innerText = getActiveInvoiceId();
 
             let grandTotal = 0;
-
             for (let key in cart) {
                 const item = cart[key];
                 const jumlah = item.price * item.qty;
@@ -1189,12 +1088,9 @@
                 tbody.appendChild(tr);
             }
 
-            /* Update Ringkasan Pembayaran (LUNAS / DP) */
             const paySummary = getPaymentSummary(grandTotal);
             const labelSisa = document.getElementById('labelSisaKurang');
-            if (labelSisa) {
-                labelSisa.innerText = 'Rp ' + paySummary.remainingAmount.toLocaleString('id-ID');
-            }
+            if (labelSisa) labelSisa.innerText = 'Rp ' + paySummary.remainingAmount.toLocaleString('id-ID');
 
             const statusBadgeEl = document.getElementById('previewStatusBadge');
             const dpBoxEl = document.getElementById('previewDPBox');
@@ -1222,9 +1118,7 @@
         }
 
         function printNota() {
-            if (Object.keys(cart).length > 0) {
-                simpanTransaksiKeRiwayat(false);
-            }
+            if (Object.keys(cart).length > 0) simpanTransaksiKeRiwayat(false);
             window.print();
         }
 
@@ -1275,9 +1169,7 @@
 
         function copyTextNota() {
             let savedRecord = null;
-            if (Object.keys(cart).length > 0) {
-                savedRecord = simpanTransaksiKeRiwayat(false);
-            }
+            if (Object.keys(cart).length > 0) savedRecord = simpanTransaksiKeRiwayat(false);
 
             const totalNow = hitungGrandTotal();
             const payNow = getPaymentSummary(totalNow);
@@ -1350,7 +1242,6 @@
             document.getElementById('inputDate').value = `${dd}/${mm}/${yyyy}`;
 
             currentDraftInvoiceId = generateInvoiceId();
-
             renderCategoryTabs();
             renderProducts();
             updateReceiptHeader();
@@ -1369,18 +1260,12 @@
             showToast('Siap membuat nota transaksi baru.');
         }
 
-        /* =========================================================
-           FITUR 1: SIMPAN & RIWAYAT PENJUALAN (CLOUD SYNC)
-           ========================================================= */
-
         function parseIndoDateToISO(dateStr) {
             if (!dateStr) return new Date().toISOString().split('T')[0];
             const parts = dateStr.split('/');
             if (parts.length === 3) {
                 const [d, m, y] = parts;
-                if (y.length === 4) {
-                    return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-                }
+                if (y.length === 4) return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
             }
             return new Date().toISOString().split('T')[0];
         }
@@ -1398,9 +1283,7 @@
         function simpanTransaksiKeRiwayat(showFeedback = true) {
             const keys = Object.keys(cart);
             if (keys.length === 0) {
-                if (showFeedback) {
-                    showToast('Pilih minimal 1 item layanan sebelum menyimpan nota!', 'error');
-                }
+                if (showFeedback) showToast('Pilih minimal 1 item layanan sebelum menyimpan nota!', 'error');
                 return null;
             }
 
@@ -1446,17 +1329,13 @@
                     persistSalesHistory();
                     kirimNotaKeSheet(salesHistory[existingIdx]);
                     lastSavedSignature = signature;
-                    if (showFeedback) {
-                        showToast(`Nota ${activeLoadedInvoiceId} diperbarui & stok otomatis disesuaikan!`);
-                    }
+                    if (showFeedback) showToast(`Nota ${activeLoadedInvoiceId} diperbarui & stok otomatis disesuaikan!`);
                     return salesHistory[existingIdx];
                 }
             }
 
             if (signature === lastSavedSignature && salesHistory.length > 0) {
-                if (showFeedback) {
-                    showToast(`Nota sudah tersimpan di riwayat (${salesHistory[0].id}).`);
-                }
+                if (showFeedback) showToast(`Nota sudah tersimpan di riwayat (${salesHistory[0].id}).`);
                 return salesHistory[0];
             }
 
@@ -1484,9 +1363,7 @@
             document.getElementById('loadedInvoiceIdText').innerText = newRecord.id;
             document.getElementById('loadedInvoiceBanner').classList.remove('hidden');
 
-            if (showFeedback) {
-                showToast(`Nota ${newRecord.id} disimpan ke Sheet & stok otomatis berkurang!`);
-            }
+            if (showFeedback) showToast(`Nota ${newRecord.id} disimpan ke Sheet & stok otomatis berkurang!`);
             return newRecord;
         }
 
@@ -1504,23 +1381,16 @@
 
         function updateRiwayatBadge() {
             const badge = document.getElementById('badgeRiwayatCount');
-            if (badge) {
-                badge.innerText = salesHistory.length;
-            }
+            if (badge) badge.innerText = salesHistory.length;
             const dpCount = salesHistory.filter(tx => tx.paymentStatus === 'DP' && (tx.remainingAmount || 0) > 0).length;
             const dpBadge = document.getElementById('badgeDPCount');
             const tabDPBadge = document.getElementById('tabDPCountBadge');
             if (dpBadge) {
                 dpBadge.innerText = `${dpCount} DP`;
-                if (dpCount > 0) {
-                    dpBadge.classList.remove('hidden');
-                } else {
-                    dpBadge.classList.add('hidden');
-                }
+                if (dpCount > 0) dpBadge.classList.remove('hidden');
+                else dpBadge.classList.add('hidden');
             }
-            if (tabDPBadge) {
-                tabDPBadge.innerText = dpCount;
-            }
+            if (tabDPBadge) tabDPBadge.innerText = dpCount;
         }
 
         function lunasiTransaksiRiwayat(id) {
@@ -1530,9 +1400,7 @@
             const tx = salesHistory[idx];
             if (tx.paymentStatus !== 'DP') return;
 
-            if (!confirm(`Tandai nota ${tx.id} (a.n. ${tx.customerName}) sebagai LUNAS?\nSisa pelunasan: Rp ${(tx.remainingAmount || 0).toLocaleString('id-ID')}`)) {
-                return;
-            }
+            if (!confirm(`Tandai nota ${tx.id} (a.n. ${tx.customerName}) sebagai LUNAS?\nSisa pelunasan: Rp ${(tx.remainingAmount || 0).toLocaleString('id-ID')}`)) return;
 
             salesHistory[idx].paymentStatus = 'LUNAS';
             salesHistory[idx].paidAmount = tx.total;
@@ -1564,9 +1432,7 @@
         function openRiwayatModal() {
             document.getElementById('modalRiwayat').classList.remove('hidden');
             renderRiwayatList();
-            if (salesHistory.length > 0 && !selectedRiwayatId) {
-                selectRiwayatDetail(salesHistory[0].id);
-            }
+            if (salesHistory.length > 0 && !selectedRiwayatId) selectRiwayatDetail(salesHistory[0].id);
         }
 
         function closeRiwayatModal() {
@@ -1578,11 +1444,8 @@
             document.getElementById('filterRiwayatDate').value = '';
             riwayatStatusFilter = 'ALL';
             document.querySelectorAll('.riwayat-status-tab').forEach((btn, idx) => {
-                if (idx === 0) {
-                    btn.className = 'riwayat-status-tab bg-brand text-white font-bold px-3 py-1 rounded-lg text-xs transition flex items-center gap-1.5';
-                } else {
-                    btn.className = 'riwayat-status-tab bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 font-bold px-3 py-1 rounded-lg text-xs transition flex items-center gap-1.5';
-                }
+                if (idx === 0) btn.className = 'riwayat-status-tab bg-brand text-white font-bold px-3 py-1 rounded-lg text-xs transition flex items-center gap-1.5';
+                else btn.className = 'riwayat-status-tab bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 font-bold px-3 py-1 rounded-lg text-xs transition flex items-center gap-1.5';
             });
             renderRiwayatList();
         }
@@ -1801,20 +1664,14 @@
             renderReceipt();
             closeRiwayatModal();
 
-            if (autoPrint) {
-                setTimeout(() => {
-                    window.print();
-                }, 250);
-            } else {
-                showToast(`Nota ${tx.id} dimuat ke preview kasir.`);
-            }
+            if (autoPrint) setTimeout(() => { window.print(); }, 250);
+            else showToast(`Nota ${tx.id} dimuat ke preview kasir.`);
         }
 
         function copyRiwayatText(id) {
             const tx = salesHistory.find(item => item.id === id);
             if (!tx) return;
-            const teks = formatReceiptTextFromData(tx);
-            copyToClipboard(teks, `Teks nota ${tx.id} berhasil disalin!`);
+            copyToClipboard(formatReceiptTextFromData(tx), `Teks nota ${tx.id} berhasil disalin!`);
         }
 
         function hapusRiwayatNota(id) {
@@ -1893,10 +1750,6 @@
             showToast('File backup JSON berhasil diunduh!');
         }
 
-        /* =========================================================
-           FITUR 2: DATA STATISTIK & GRAFIK PENJUALAN (CHART.JS)
-           ========================================================= */
-
         function openStatistikModal() {
             document.getElementById('modalStatistik').classList.remove('hidden');
             updateStatistikDashboard();
@@ -1926,11 +1779,7 @@
             const todayISO = now.toISOString().split('T')[0];
             const currentMonthPrefix = todayISO.slice(0, 7);
 
-            let todayRevenue = 0;
-            let monthRevenue = 0;
-            let totalKasRiil = 0;
-            let totalPiutang = 0;
-            let piutangNotaCount = 0;
+            let todayRevenue = 0, monthRevenue = 0, totalKasRiil = 0, totalPiutang = 0, piutangNotaCount = 0;
 
             salesHistory.forEach(tx => {
                 const paid = tx.paidAmount !== undefined ? tx.paidAmount : tx.total;
@@ -1969,15 +1818,11 @@
                     const pCat = item.category || 'Lainnya';
                     const sub = item.qty * item.price;
 
-                    if (!productStatsMap[pName]) {
-                        productStatsMap[pName] = { name: pName, category: pCat, qty: 0, revenue: 0 };
-                    }
+                    if (!productStatsMap[pName]) productStatsMap[pName] = { name: pName, category: pCat, qty: 0, revenue: 0 };
                     productStatsMap[pName].qty += item.qty;
                     productStatsMap[pName].revenue += sub;
 
-                    if (!categoryStatsMap[pCat]) {
-                        categoryStatsMap[pCat] = 0;
-                    }
+                    if (!categoryStatsMap[pCat]) categoryStatsMap[pCat] = 0;
                     categoryStatsMap[pCat] += sub;
                 });
             });
@@ -2057,9 +1902,7 @@
 
         function renderSalesTrendChart(labels, paidValues, piutangValues) {
             const ctx = document.getElementById('salesTrendChart').getContext('2d');
-            if (salesTrendChartInstance) {
-                salesTrendChartInstance.destroy();
-            }
+            if (salesTrendChartInstance) salesTrendChartInstance.destroy();
 
             salesTrendChartInstance = new Chart(ctx, {
                 type: currentTrendChartType,
@@ -2092,11 +1935,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: { boxWidth: 12, font: { size: 11, weight: 'bold' } }
-                        },
+                        legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11, weight: 'bold' } } },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -2110,14 +1949,10 @@
                             beginAtZero: true,
                             ticks: {
                                 font: { size: 10 },
-                                callback: function(val) {
-                                    return 'Rp ' + val.toLocaleString('id-ID');
-                                }
+                                callback: function(val) { return 'Rp ' + val.toLocaleString('id-ID'); }
                             }
                         },
-                        x: {
-                            ticks: { font: { size: 10 } }
-                        }
+                        x: { ticks: { font: { size: 10 } } }
                     }
                 }
             });
@@ -2125,9 +1960,7 @@
 
         function renderCategoryDoughnutChart(categoryStatsMap) {
             const ctx = document.getElementById('categoryDoughnutChart').getContext('2d');
-            if (categoryDoughnutChartInstance) {
-                categoryDoughnutChartInstance.destroy();
-            }
+            if (categoryDoughnutChartInstance) categoryDoughnutChartInstance.destroy();
 
             const catLabels = Object.keys(categoryStatsMap);
             const catValues = Object.values(categoryStatsMap);
@@ -2148,13 +1981,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                boxWidth: 10,
-                                font: { size: 10, weight: 'bold' }
-                            }
-                        },
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10, weight: 'bold' } } },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -2168,21 +1995,14 @@
             });
         }
 
-        /* =========================================================
-           TOAST NOTIFICATION
-           ========================================================= */
-
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toastNotification');
             const msgEl = document.getElementById('toastMessage');
             const iconEl = document.getElementById('toastIcon');
 
             msgEl.textContent = message;
-            if (type === 'error') {
-                iconEl.className = 'fa-solid fa-circle-exclamation text-red-400 text-lg';
-            } else {
-                iconEl.className = 'fa-solid fa-circle-check text-emerald-400 text-lg';
-            }
+            if (type === 'error') iconEl.className = 'fa-solid fa-circle-exclamation text-red-400 text-lg';
+            else iconEl.className = 'fa-solid fa-circle-check text-emerald-400 text-lg';
 
             toast.classList.remove('translate-y-20', 'opacity-0');
             toast.classList.add('translate-y-0', 'opacity-100');
@@ -2194,4 +2014,4 @@
         }
     </script>
 </body>
-</html>
+</html>   
