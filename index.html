@@ -47,6 +47,16 @@
             background: #94a3b8;
         }
 
+        /* Hilangkan panah spinner bawaan input number di kartu produk */
+        #productGrid input[type=number]::-webkit-inner-spin-button,
+        #productGrid input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        #productGrid input[type=number] {
+            -moz-appearance: textfield;
+        }
+
         .nota-sohad {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #000000;
@@ -290,7 +300,6 @@
             <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3.5"></div>
 
         </div>
-
         <!-- RIGHT PANEL: Live A6 Receipt Preview -->
         <div class="w-full lg:w-fit lg:shrink-0 flex flex-col lg:sticky lg:top-20">
             <div class="bg-slate-200 rounded-xl shadow-lg border border-gray-300 overflow-hidden flex flex-col">
@@ -412,7 +421,8 @@
     <footer class="bg-white border-t border-gray-200 mt-12 py-6 text-center text-xs text-gray-500">
         <p>© 2026 Sohad Studio. All Rights Reserved.</p>
     </footer>
-<!-- MODAL 1: RIWAYAT TRANSAKSI & ARSIP NOTA -->
+
+    <!-- MODAL 1: RIWAYAT TRANSAKSI & ARSIP NOTA -->
     <div id="modalRiwayat" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white w-full max-w-6xl max-h-[92vh] rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
             
@@ -626,7 +636,6 @@
         <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
         <span id="toastMessage">Pesan berhasil diproses</span>
     </div>
-
     <!-- JavaScript Application Logic -->
     <script>
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTOF5QVt7_3KfgEgA56oJMj-bGGBg4ZNdkCuaZO2mK9935HSgUFmiFt1KVNKHnLMD3sA/exec';
@@ -659,6 +668,9 @@
         let salesTrendChartInstance = null;
         let categoryDoughnutChartInstance = null;
         let currentTrendChartType = 'bar';
+
+        let holdTimeout = null;
+        let holdInterval = null;
 
         window.onload = function() {
             const today = new Date();
@@ -899,6 +911,83 @@
             }).join('');
         }
 
+        function stopHoldQty() {
+            clearTimeout(holdTimeout);
+            clearInterval(holdInterval);
+            holdTimeout = null;
+            holdInterval = null;
+        }
+
+        function startHoldQty(id, delta, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            stopHoldQty();
+
+            changeQty(id, delta);
+
+            let ticks = 0;
+            holdTimeout = setTimeout(() => {
+                holdInterval = setInterval(() => {
+                    ticks++;
+                    let step = 1;
+                    if (ticks > 30) step = 10;
+                    else if (ticks > 12) step = 5;
+
+                    const key = String(id);
+                    const product = products.find(p => String(p.id) === key);
+                    if (!product) { stopHoldQty(); return; }
+
+                    const isJasa = (product.category || '').toLowerCase().includes('jasa') || product.stock === null || product.stock === 'Unlimited';
+                    const hasStockInfo = !isJasa && typeof product.stock === 'number' && !isNaN(product.stock);
+                    const currentQty = cart[key] ? cart[key].qty : 0;
+
+                    if (delta > 0 && hasStockInfo) {
+                        const sisa = product.stock - currentQty;
+                        if (sisa <= 0) { stopHoldQty(); return; }
+                        changeQty(id, Math.min(step, sisa));
+                    } else if (delta < 0) {
+                        if (currentQty <= 0) { stopHoldQty(); return; }
+                        changeQty(id, -Math.min(step, currentQty));
+                    } else {
+                        changeQty(id, delta * step);
+                    }
+                }, 65);
+            }, 350);
+        }
+
+        function setExactQty(id, rawValue) {
+            const key = String(id);
+            const product = products.find(p => String(p.id) === key);
+            if (!product) return;
+
+            let targetQty = parseInt(rawValue, 10);
+            if (isNaN(targetQty) || targetQty < 0) targetQty = 0;
+
+            const isJasa = (product.category || '').toLowerCase().includes('jasa') || product.stock === null || product.stock === 'Unlimited';
+            const hasStockInfo = !isJasa && typeof product.stock === 'number' && !isNaN(product.stock);
+
+            if (hasStockInfo && targetQty > product.stock) {
+                showToast(`Stok ${product.name} hanya tersisa ${product.stock}!`, 'error');
+                targetQty = product.stock;
+            }
+
+            if (targetQty <= 0) {
+                delete cart[key];
+            } else {
+                cart[key] = {
+                    sku: product.sku || key,
+                    name: product.name,
+                    price: product.price,
+                    qty: targetQty,
+                    category: product.category
+                };
+            }
+            renderProducts();
+            renderReceipt();
+        }
+
         function renderProducts() {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
@@ -944,7 +1033,7 @@
                 }
                 
                 const card = document.createElement('div');
-                card.className = `bg-white rounded-xl shadow-sm border p-3 sm:p-3.5 flex flex-col justify-between transition ${isOutOfStock ? 'opacity-60 border-red-200 cursor-not-allowed' : 'hover:shadow-md cursor-pointer'} ${qty > 0 ? 'border-brand bg-slate-50' : 'border-gray-200'}`;
+                card.className = `bg-white rounded-xl shadow-sm border p-3 sm:p-3.5 flex flex-col justify-between transition select-none ${isOutOfStock ? 'opacity-60 border-red-200 cursor-not-allowed' : 'hover:shadow-md cursor-pointer'} ${qty > 0 ? 'border-brand bg-slate-50' : 'border-gray-200'}`;
                 card.onclick = () => { if (!isOutOfStock) changeQty(prodKey, 1); };
 
                 const safeIdArg = `'${prodKey.replace(/'/g, "\\'")}'`;
@@ -959,12 +1048,34 @@
                         <h4 class="font-bold text-xs sm:text-sm text-gray-800 mb-1 leading-snug">${product.name}</h4>
                         <p class="text-brand font-extrabold text-xs sm:text-sm">${product.price > 0 ? 'Rp ' + product.price.toLocaleString('id-ID') : 'Harga Custom'}</p>
                     </div>
-                    <div class="mt-2.5 sm:mt-3 flex items-center justify-between bg-gray-50 p-1 rounded-lg border border-gray-200" onclick="event.stopPropagation()">
-                        <button onclick="changeQty(${safeIdArg}, -1)" class="w-7 h-7 bg-white hover:bg-gray-200 border border-gray-300 rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
+                    <div class="mt-2.5 sm:mt-3 flex items-center justify-between bg-gray-50 p-1 rounded-lg border border-gray-200 gap-1" onclick="event.stopPropagation()">
+                        <button
+                            onmousedown="startHoldQty(${safeIdArg}, -1, event)"
+                            onmouseup="stopHoldQty()"
+                            onmouseleave="stopHoldQty()"
+                            ontouchstart="startHoldQty(${safeIdArg}, -1, event)"
+                            ontouchend="stopHoldQty()"
+                            class="w-7 h-7 shrink-0 bg-white hover:bg-gray-200 border border-gray-300 rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
                             <i class="fa-solid fa-minus"></i>
                         </button>
-                        <span class="font-extrabold text-xs sm:text-sm px-2">${qty}</span>
-                        <button onclick="changeQty(${safeIdArg}, 1)" ${isMaxReached ? 'disabled' : ''} class="w-7 h-7 ${isMaxReached ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-brand text-white hover:bg-gray-800'} rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
+                        <input
+                            type="number"
+                            min="0"
+                            value="${qty}"
+                            ${isOutOfStock ? 'disabled' : ''}
+                            onfocus="this.select()"
+                            onchange="setExactQty(${safeIdArg}, this.value)"
+                            onkeydown="if(event.key==='Enter'){ this.blur(); }"
+                            class="w-full min-w-0 text-center font-extrabold text-xs sm:text-sm bg-transparent border-0 focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand rounded py-0.5"
+                        />
+                        <button
+                            onmousedown="if(!this.disabled) startHoldQty(${safeIdArg}, 1, event)"
+                            onmouseup="stopHoldQty()"
+                            onmouseleave="stopHoldQty()"
+                            ontouchstart="if(!this.disabled) startHoldQty(${safeIdArg}, 1, event)"
+                            ontouchend="stopHoldQty()"
+                            ${isMaxReached ? 'disabled' : ''}
+                            class="w-7 h-7 shrink-0 ${isMaxReached ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-brand text-white hover:bg-gray-800'} rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
@@ -984,6 +1095,7 @@
 
             if (delta > 0 && hasStockInfo && (currentQty + delta) > product.stock) {
                 showToast(`Stok ${product.name} hanya tersisa ${product.stock}!`, 'error');
+                stopHoldQty();
                 return;
             }
 
@@ -2014,4 +2126,4 @@
         }
     </script>
 </body>
-</html>   
+</html>
