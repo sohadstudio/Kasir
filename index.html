@@ -150,20 +150,20 @@
     <header class="bg-white border-b border-gray-200 sticky top-0 z-30 px-2.5 sm:px-4 lg:px-8 py-2.5 sm:py-3 shadow-sm flex items-center justify-between gap-1.5 sm:gap-4">
         <div class="flex items-center space-x-2 sm:space-x-4 min-w-0">
             <div class="flex items-center shrink-0">
-<div class="hidden md:block">
-  <img
-    alt="Sohad Studio Desktop"
-    class="h-10 w-auto object-contain"
-    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPRuU_SNMh5Lc93GxCE202OTAZmtnLe-JiKMePClSILo4MeWnh-syhTxfUWw-XdpoHjf8jqit0ewnPLhyprCFr7bKh5FIyhExsGDT9ZjC1YiVmHyNtM__iVwCXOrr0WfzfUbrHLiLp4o6STDZDm3GBlSrnSG8Jz2d7VHwUpGNotNpvqphYH9i9l5W9dTA/s3076/Sub%20Logo%20Sohad%20Studio%201%20%28Hitam%29.png"
-  />
-</div>
-<div class="block md:hidden">
-  <img
-    alt="Sohad Studio Mobile"
-    class="h-9 w-auto object-contain"
-    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu42WQLGAfywgOKH1Rt9OaO2eFduExgBPBMnAkvHN4AUAKOihYuNTlTwa-XJZ8_XEJo4dGVGXTv8EL38AE2HW9I5X5bX6OXXJHupej016-sTTC83fCBFwULIcC_SOhrUhUKEYs1Ahz6J2KqS5n7G8X6TEtBMBD1Ld7xhZ3Jp9zK1lvE2o6oeDV3FR8uiE/s2406/Sub%20Logo%20Sohad%20Studio%202%20%28Hitam%29.png"
-  />
-</div>
+                <div class="hidden md:block">
+                    <img
+                        alt="Sohad Studio Desktop"
+                        class="h-10 w-auto object-contain"
+                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPRuU_SNMh5Lc93GxCE202OTAZmtnLe-JiKMePClSILo4MeWnh-syhTxfUWw-XdpoHjf8jqit0ewnPLhyprCFr7bKh5FIyhExsGDT9ZjC1YiVmHyNtM__iVwCXOrr0WfzfUbrHLiLp4o6STDZDm3GBlSrnSG8Jz2d7VHwUpGNotNpvqphYH9i9l5W9dTA/s3076/Sub%20Logo%20Sohad%20Studio%201%20%28Hitam%29.png"
+                    />
+                </div>
+                <div class="block md:hidden">
+                    <img
+                        alt="Sohad Studio Mobile"
+                        class="h-9 w-auto object-contain"
+                        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu42WQLGAfywgOKH1Rt9OaO2eFduExgBPBMnAkvHN4AUAKOihYuNTlTwa-XJZ8_XEJo4dGVGXTv8EL38AE2HW9I5X5bX6OXXJHupej016-sTTC83fCBFwULIcC_SOhrUhUKEYs1Ahz6J2KqS5n7G8X6TEtBMBD1Ld7xhZ3Jp9zK1lvE2o6oeDV3FR8uiE/s2406/Sub%20Logo%20Sohad%20Studio%202%20%28Hitam%29.png"
+                    />
+                </div>
             </div>
         </div>
 
@@ -286,20 +286,12 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input type="text" id="searchProduct" oninput="filterProducts()" placeholder="Cari layanan (contoh: Print, Scan, Foto)..." class="w-full bg-gray-50 border border-gray-300 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+                    <input type="text" id="searchProduct" oninput="filterProducts()" placeholder="Cari layanan atau kode SKU (contoh: Print, PRN-001)..." class="w-full bg-gray-50 border border-gray-300 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
                 </div>
 
-                <!-- Category Tabs -->
+                <!-- Category Tabs (Auto-updated from Sheet + Default) -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="categoryTabs">
-                    <button onclick="selectCategory('Semua', this)" class="cat-btn bg-brand text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm transition">Semua</button>
-                    <button onclick="selectCategory('Print', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Print</button>
-                    <button onclick="selectCategory('Scan', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Scan</button>
-                    <button onclick="selectCategory('Cetak Foto', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Cetak Foto</button>
-                    <button onclick="selectCategory('Sticker', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Sticker</button>
-                    <button onclick="selectCategory('Finishing', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Finishing</button>
-                    <button onclick="selectCategory('Buku', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Buku</button>
-                    <button onclick="selectCategory('ATK', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">ATK</button>
-                    <button onclick="selectCategory('Lainnya', this)" class="cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition">Lainnya</button>
+                    <!-- Injected via JS -->
                 </div>
             </div>
 
@@ -666,25 +658,20 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTIzSXx2quc54TgFe1vcKxKY4wZ4M_NIhcAkPr9JKaclUQqfWbLvbWofsjJflkKDO-/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTOF5QVt7_3KfgEgA56oJMj-bGGBg4ZNdkCuaZO2mK9935HSgUFmiFt1KVNKHnLMD3sA/exec';
         const HISTORY_STORAGE_KEY = 'sohad_riwayat_penjualan';
+        const PRODUCT_STORAGE_KEY = 'sohad_produk_v3';
 
         const defaultProduk = [
-            { id: 1, name: 'PRINT BW (HVS A4)', category: 'Print', price: 500 },
-            { id: 2, name: 'PRINT BW (HVS F4)', category: 'Print', price: 600 },
-            { id: 3, name: 'PRINT WARNA 50% (HVS A4)', category: 'Print', price: 700 },
-            { id: 4, name: 'PRINT WARNA 50% (HVS F4)', category: 'Print', price: 800 },
-            { id: 5, name: 'LAMINASI (A4)', category: 'Finishing', price: 5000 },
-            { id: 6, name: 'SCAN (A4)', category: 'Scan', price: 3000 },
-            { id: 7, name: 'CETAK PAS FOTO 4x6 (4pcs)', category: 'Cetak Foto', price: 10000 },
-            { id: 8, name: 'STICKER VINYL A3+ (Cut)', category: 'Sticker', price: 15000 },
-            { id: 9, name: 'JILID SOFTCOVER', category: 'Finishing', price: 7000 },
-            { id: 10, name: 'JILID STEPLER', category: 'Finishing', price: 4000 },
-            { id: 11, name: 'KITAB', category: 'Buku', price: 10000 },
-            { id: 12, name: 'ISI STEPLER KECIL', category: 'ATK', price: 2000 }
+            { id: 'PRN-001', sku: 'PRN-001', name: 'Print HVS A4 Hitam Putih', category: 'Percetakan', price: 500, stock: 500 },
+            { id: 'PRN-002', sku: 'PRN-002', name: 'Print HVS A4 Warna', category: 'Percetakan', price: 1500, stock: 300 },
+            { id: 'CPY-001', sku: 'CPY-001', name: 'Fotokopi A4', category: 'Percetakan', price: 300, stock: 1000 },
+            { id: 'ATK-001', sku: 'ATK-001', name: 'Pulpen Gel Hitam', category: 'ATK', price: 3500, stock: 50 },
+            { id: 'ATK-002', sku: 'ATK-002', name: 'Map Plastik Kancing', category: 'ATK', price: 4000, stock: 40 },
+            { id: 'DIG-001', sku: 'DIG-001', name: 'Undangan Digital Custom', category: 'Jasa Digital', price: 75000, stock: 99 }
         ];
 
-        let products = JSON.parse(localStorage.getItem('sohad_produk_v2')) || defaultProduk;
+        let products = JSON.parse(localStorage.getItem(PRODUCT_STORAGE_KEY)) || defaultProduk;
         let salesHistory = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
         let currentCategory = 'Semua';
         let searchQuery = '';
@@ -715,6 +702,7 @@
 
             currentDraftInvoiceId = generateInvoiceId();
             
+            renderCategoryTabs();
             renderProducts();
             updateReceiptHeader();
             renderReceipt();
@@ -870,7 +858,7 @@
                 return;
             }
             if (manualClick) {
-                showToast('Menyinkronkan stok dengan Google Sheets...');
+                showToast('Menyinkronkan SKU & stok dari Google Sheets...');
             }
 
             try {
@@ -878,13 +866,14 @@
                 const json = await res.json();
                 if (json.status === 'ok' && Array.isArray(json.data) && json.data.length > 0) {
                     products = json.data;
-                    localStorage.setItem('sohad_produk_v2', JSON.stringify(products));
+                    localStorage.setItem(PRODUCT_STORAGE_KEY, JSON.stringify(products));
+                    renderCategoryTabs();
                     renderProducts();
                     if (manualClick) {
-                        showToast('Sinkronisasi stok berhasil! (' + json.data.length + ' item)');
+                        showToast('Sinkronisasi stok berhasil! (' + json.data.length + ' produk)');
                     }
                 } else if (manualClick) {
-                    showToast('Data produk di Sheet masih kosong.', 'error');
+                    showToast(json.message || 'Data produk di Sheet masih kosong.', 'error');
                 }
             } catch (err) {
                 console.error(err);
@@ -907,9 +896,23 @@
                 const res = await fetch(`${APPS_SCRIPT_URL}?action=getRiwayat`);
                 const json = await res.json();
                 if (json.status === 'ok' && Array.isArray(json.data)) {
-                    salesHistory = json.data.sort((a, b) => {
-                        return (b.createdAt || '').localeCompare(a.createdAt || '');
-                    });
+                    // Gabungkan metadata lokal (no WA, status DP) jika ID nota cocok
+                    const localMap = {};
+                    salesHistory.forEach(item => { localMap[item.id] = item; });
+
+                    salesHistory = json.data.map(sheetTx => {
+                        const local = localMap[sheetTx.id];
+                        if (local) {
+                            return {
+                                ...sheetTx,
+                                customerPhone: local.customerPhone && local.customerPhone !== '-' ? local.customerPhone : sheetTx.customerPhone,
+                                paymentStatus: local.paymentStatus || sheetTx.paymentStatus,
+                                paidAmount: local.paymentStatus === 'DP' ? local.paidAmount : sheetTx.total,
+                                remainingAmount: local.paymentStatus === 'DP' ? Math.max(0, sheetTx.total - (local.paidAmount || 0)) : 0
+                            };
+                        }
+                        return sheetTx;
+                    }).sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
 
                     localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(salesHistory));
                     updateRiwayatBadge();
@@ -922,14 +925,6 @@
                         renderRiwayatList();
                         if (selectedRiwayatId) {
                             selectRiwayatDetail(selectedRiwayatId);
-                        } else {
-                            document.getElementById('riwayatDetailContainer').innerHTML = `
-                                <div class="h-full flex flex-col items-center justify-center text-center text-gray-400 py-10">
-                                    <i class="fa-solid fa-receipt text-4xl mb-2"></i>
-                                    <p class="text-sm font-semibold text-gray-500">Pilih salah satu transaksi di sebelah kiri</p>
-                                    <p class="text-xs">Untuk melihat rincian item, melunasi DP, atau mencetak ulang nota</p>
-                                </div>
-                            `;
                         }
                     }
                     if (manualClick) {
@@ -951,6 +946,11 @@
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'saveRiwayat', data: txData })
+            }).then(() => {
+                // Tarik ulang stok terbaru setelah Sheet menghitung rumus pengurangan stok
+                setTimeout(() => {
+                    ambilStokDariSheet(false);
+                }, 1800);
             }).catch(err => console.error('Gagal simpan ke Sheet:', err));
         }
 
@@ -961,20 +961,45 @@
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ action: 'deleteRiwayat', id: invoiceId })
+            }).then(() => {
+                setTimeout(() => {
+                    ambilStokDariSheet(false);
+                }, 1800);
             }).catch(err => console.error('Gagal hapus di Sheet:', err));
         }
 
         /* =========================================================
-           KATALOG PRODUK & KERANJANG
+           KATALOG PRODUK (DENGAN SKU & STOK) & KERANJANG
            ========================================================= */
+
+        function renderCategoryTabs() {
+            const container = document.getElementById('categoryTabs');
+            if (!container) return;
+
+            const dynamicCats = [...new Set(products.map(p => p.category).filter(Boolean))];
+            const categories = ['Semua', ...dynamicCats];
+
+            if (!categories.includes(currentCategory)) {
+                currentCategory = 'Semua';
+            }
+
+            container.innerHTML = categories.map(cat => {
+                const isActive = cat.toLowerCase() === currentCategory.toLowerCase();
+                const cls = isActive
+                    ? 'cat-btn bg-brand text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm transition'
+                    : 'cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition';
+                return `<button onclick="selectCategory('${cat.replace(/'/g, "\\'")}', this)" class="${cls}">${cat}</button>`;
+            }).join('');
+        }
 
         function renderProducts() {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
 
             let filtered = products.filter(p => {
-                const matchCat = currentCategory === 'Semua' || p.category.toLowerCase() === currentCategory.toLowerCase();
-                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchCat = currentCategory === 'Semua' || (p.category || '').toLowerCase() === currentCategory.toLowerCase();
+                const q = searchQuery.toLowerCase();
+                const matchSearch = (p.name || '').toLowerCase().includes(q) || (p.sku || String(p.id)).toLowerCase().includes(q);
                 return matchCat && matchSearch;
             });
 
@@ -989,23 +1014,49 @@
             }
 
             filtered.forEach(product => {
-                const qty = cart[product.id] ? cart[product.id].qty : 0;
+                const prodKey = String(product.id);
+                const qty = cart[prodKey] ? cart[prodKey].qty : 0;
+                const skuLabel = product.sku || prodKey;
+                const hasStockInfo = typeof product.stock === 'number' && !isNaN(product.stock);
+                const sisaStok = hasStockInfo ? product.stock : null;
+                const isOutOfStock = hasStockInfo && sisaStok <= 0;
+                const isMaxReached = hasStockInfo && qty >= sisaStok;
+
+                let stockBadgeHtml = '';
+                if (hasStockInfo) {
+                    if (sisaStok <= 0) {
+                        stockBadgeHtml = `<span class="bg-red-100 text-red-700 border border-red-200 font-extrabold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Habis (0)</span>`;
+                    } else if (sisaStok <= 10) {
+                        stockBadgeHtml = `<span class="bg-amber-100 text-amber-800 border border-amber-200 font-extrabold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Stok: ${sisaStok}</span>`;
+                    } else {
+                        stockBadgeHtml = `<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded">Stok: ${sisaStok}</span>`;
+                    }
+                }
                 
                 const card = document.createElement('div');
-                card.className = `bg-white rounded-xl shadow-sm border p-3 sm:p-3.5 flex flex-col justify-between hover:shadow-md transition cursor-pointer ${qty > 0 ? 'border-brand bg-slate-50' : 'border-gray-200'}`;
-                card.onclick = () => changeQty(product.id, 1);
+                card.className = `bg-white rounded-xl shadow-sm border p-3 sm:p-3.5 flex flex-col justify-between transition ${isOutOfStock ? 'opacity-60 border-red-200 cursor-not-allowed' : 'hover:shadow-md cursor-pointer'} ${qty > 0 ? 'border-brand bg-slate-50' : 'border-gray-200'}`;
+                card.onclick = () => {
+                    if (!isOutOfStock) changeQty(prodKey, 1);
+                };
+
+                const safeIdArg = `'${prodKey.replace(/'/g, "\\'")}'`;
+
                 card.innerHTML = `
                     <div>
-                        <span class="inline-block bg-black text-white font-bold text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded mb-1.5 sm:mb-2 uppercase">${product.category}</span>
+                        <div class="flex items-center justify-between gap-1 mb-1.5 flex-wrap">
+                            <span class="inline-block bg-black text-white font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded uppercase">${product.category}</span>
+                            ${stockBadgeHtml}
+                        </div>
+                        <div class="text-[10px] font-mono font-bold text-gray-400 mb-0.5">${skuLabel}</div>
                         <h4 class="font-bold text-xs sm:text-sm text-gray-800 mb-1 leading-snug">${product.name}</h4>
                         <p class="text-brand font-extrabold text-xs sm:text-sm">${product.price > 0 ? 'Rp ' + product.price.toLocaleString('id-ID') : 'Harga Custom'}</p>
                     </div>
                     <div class="mt-2.5 sm:mt-3 flex items-center justify-between bg-gray-50 p-1 rounded-lg border border-gray-200" onclick="event.stopPropagation()">
-                        <button onclick="changeQty(${product.id}, -1)" class="w-7 h-7 bg-white hover:bg-gray-200 border border-gray-300 rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
+                        <button onclick="changeQty(${safeIdArg}, -1)" class="w-7 h-7 bg-white hover:bg-gray-200 border border-gray-300 rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
                             <i class="fa-solid fa-minus"></i>
                         </button>
                         <span class="font-extrabold text-xs sm:text-sm px-2">${qty}</span>
-                        <button onclick="changeQty(${product.id}, 1)" class="w-7 h-7 bg-brand text-white hover:bg-gray-800 rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
+                        <button onclick="changeQty(${safeIdArg}, 1)" ${isMaxReached ? 'disabled' : ''} class="w-7 h-7 ${isMaxReached ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-brand text-white hover:bg-gray-800'} rounded-md font-bold text-xs flex items-center justify-center transition shadow-xs">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
@@ -1015,17 +1066,32 @@
         }
 
         function changeQty(id, delta) {
-            const product = products.find(p => p.id === id);
+            const key = String(id);
+            const product = products.find(p => String(p.id) === key);
             if (!product) return;
 
-            if (!cart[id]) {
+            const hasStockInfo = typeof product.stock === 'number' && !isNaN(product.stock);
+            const currentQty = cart[key] ? cart[key].qty : 0;
+
+            if (delta > 0 && hasStockInfo && (currentQty + delta) > product.stock) {
+                showToast(`Stok ${product.name} hanya tersisa ${product.stock}!`, 'error');
+                return;
+            }
+
+            if (!cart[key]) {
                 if (delta > 0) {
-                    cart[id] = { name: product.name, price: product.price, qty: delta, category: product.category };
+                    cart[key] = {
+                        sku: product.sku || key,
+                        name: product.name,
+                        price: product.price,
+                        qty: delta,
+                        category: product.category
+                    };
                 }
             } else {
-                cart[id].qty += delta;
-                if (cart[id].qty <= 0) {
-                    delete cart[id];
+                cart[key].qty += delta;
+                if (cart[key].qty <= 0) {
+                    delete cart[key];
                 }
             }
             renderProducts();
@@ -1044,8 +1110,14 @@
                 return;
             }
 
-            const customId = 'custom_' + (++customItemCounter);
-            cart[customId] = { name: name.toUpperCase(), price: price, qty: 1, category: 'Custom' };
+            const customId = 'CUSTOM-' + (++customItemCounter);
+            cart[customId] = {
+                sku: 'CUSTOM',
+                name: name.toUpperCase(),
+                price: price,
+                qty: 1,
+                category: 'Custom'
+            };
 
             nameInput.value = '';
             priceInput.value = '';
@@ -1066,7 +1138,9 @@
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.className = 'cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition';
             });
-            btnElement.className = 'cat-btn bg-brand text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm transition';
+            if (btnElement) {
+                btnElement.className = 'cat-btn bg-brand text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm transition';
+            }
             renderProducts();
         }
 
@@ -1277,14 +1351,7 @@
 
             currentDraftInvoiceId = generateInvoiceId();
 
-            document.querySelectorAll('.cat-btn').forEach((btn, idx) => {
-                if (idx === 0) {
-                    btn.className = 'cat-btn bg-brand text-white font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap shadow-sm transition';
-                } else {
-                    btn.className = 'cat-btn bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-3.5 py-1.5 rounded-lg text-xs whitespace-nowrap transition';
-                }
-            });
-
+            renderCategoryTabs();
             renderProducts();
             updateReceiptHeader();
             renderReceipt();
@@ -1324,7 +1391,7 @@
             const dateStr = document.getElementById('inputDate').value.trim();
             const total = hitungGrandTotal();
             const pay = getPaymentSummary(total);
-            const itemsSummary = Object.keys(cart).sort().map(k => `${cart[k].name}:${cart[k].qty}:${cart[k].price}`).join('|');
+            const itemsSummary = Object.keys(cart).sort().map(k => `${cart[k].sku || k}:${cart[k].name}:${cart[k].qty}:${cart[k].price}`).join('|');
             return `${name}__${phone}__${dateStr}__${pay.status}__${pay.paidAmount}__${itemsSummary}`;
         }
 
@@ -1349,6 +1416,7 @@
                 const subtotal = item.price * item.qty;
                 total += subtotal;
                 return {
+                    sku: item.sku || key,
                     name: item.name,
                     category: item.category || 'Lainnya',
                     price: item.price,
@@ -1379,7 +1447,7 @@
                     kirimNotaKeSheet(salesHistory[existingIdx]);
                     lastSavedSignature = signature;
                     if (showFeedback) {
-                        showToast(`Nota ${activeLoadedInvoiceId} berhasil diperbarui & tersimpan ke Sheet!`);
+                        showToast(`Nota ${activeLoadedInvoiceId} diperbarui & stok otomatis disesuaikan!`);
                     }
                     return salesHistory[existingIdx];
                 }
@@ -1417,7 +1485,7 @@
             document.getElementById('loadedInvoiceBanner').classList.remove('hidden');
 
             if (showFeedback) {
-                showToast(`Nota ${newRecord.id} berhasil disimpan & tersinkron ke Sheet!`);
+                showToast(`Nota ${newRecord.id} disimpan ke Sheet & stok otomatis berkurang!`);
             }
             return newRecord;
         }
@@ -1426,7 +1494,7 @@
             const saved = simpanTransaksiKeRiwayat(false);
             if (!saved) return;
             clearFormWithoutConfirm();
-            showToast(`Nota ${saved.id} tersimpan ke Sheet! Siap untuk pelanggan berikutnya.`);
+            showToast(`Nota ${saved.id} tersimpan & stok berkurang! Siap untuk transaksi baru.`);
         }
 
         function persistSalesHistory() {
@@ -1481,7 +1549,7 @@
                 renderReceipt();
             }
 
-            showToast(`Nota ${tx.id} telah ditandai LUNAS & diperbarui di Sheet!`);
+            showToast(`Nota ${tx.id} telah ditandai LUNAS!`);
         }
 
         function setRiwayatStatusFilter(status, btnEl) {
@@ -1533,7 +1601,7 @@
                     tx.customerName.toLowerCase().includes(keyword) ||
                     tx.customerPhone.toLowerCase().includes(keyword) ||
                     tx.dateStr.toLowerCase().includes(keyword) ||
-                    tx.items.some(i => i.name.toLowerCase().includes(keyword));
+                    tx.items.some(i => i.name.toLowerCase().includes(keyword) || (i.sku || '').toLowerCase().includes(keyword));
                 return matchStatus && matchDate && matchText;
             });
 
@@ -1600,7 +1668,10 @@
             const rowsHtml = tx.items.map(item => `
                 <tr class="border-b border-gray-200 text-xs">
                     <td class="py-1.5 text-center font-bold">${item.qty}</td>
-                    <td class="py-1.5 font-semibold text-gray-800">${item.name}</td>
+                    <td class="py-1.5 font-semibold text-gray-800">
+                        <div>${item.name}</div>
+                        ${item.sku ? `<div class="text-[10px] font-mono text-gray-400">${item.sku}</div>` : ''}
+                    </td>
                     <td class="py-1.5 text-right text-gray-600">${item.price.toLocaleString('id-ID')}</td>
                     <td class="py-1.5 text-right font-bold text-gray-900">${(item.qty * item.price).toLocaleString('id-ID')}</td>
                 </tr>
@@ -1694,9 +1765,13 @@
 
             cart = {};
             tx.items.forEach((item, index) => {
-                const matchedProd = products.find(p => p.name.toUpperCase() === item.name.toUpperCase());
-                const key = matchedProd ? matchedProd.id : ('restored_' + index + '_' + Date.now());
+                const matchedProd = products.find(p =>
+                    (item.sku && String(p.sku).toUpperCase() === String(item.sku).toUpperCase()) ||
+                    p.name.toUpperCase() === item.name.toUpperCase()
+                );
+                const key = matchedProd ? String(matchedProd.id) : ('restored_' + index + '_' + Date.now());
                 cart[key] = {
+                    sku: item.sku || (matchedProd ? matchedProd.sku : 'CUSTOM'),
                     name: item.name,
                     price: item.price,
                     qty: item.qty,
@@ -1743,7 +1818,7 @@
         }
 
         function hapusRiwayatNota(id) {
-            if (!confirm(`Hapus nota ${id} dari riwayat penjualan & Google Sheets?`)) return;
+            if (!confirm(`Hapus nota ${id} dari riwayat penjualan & kembalikan stok di Google Sheets?`)) return;
             salesHistory = salesHistory.filter(item => item.id !== id);
             persistSalesHistory();
             hapusNotaDiSheet(id);
@@ -1765,7 +1840,7 @@
                     </div>
                 `;
             }
-            showToast(`Nota ${id} dihapus dari riwayat & Google Sheets.`);
+            showToast(`Nota ${id} dihapus & stok di Google Sheets otomatis kembali.`);
         }
 
         function exportRiwayatCSV() {
@@ -1778,7 +1853,7 @@
                 const status = tx.paymentStatus || 'LUNAS';
                 const paid = tx.paidAmount !== undefined ? tx.paidAmount : tx.total;
                 const rem = tx.remainingAmount !== undefined ? tx.remainingAmount : 0;
-                const itemStr = tx.items.map(i => `${i.qty}x ${i.name} (${i.price})`).join('; ');
+                const itemStr = tx.items.map(i => `${i.qty}x ${i.name} [${i.sku || '-'}] (${i.price})`).join('; ');
                 return [
                     `"${tx.id}"`,
                     `"${tx.dateStr}"`,
