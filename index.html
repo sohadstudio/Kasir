@@ -195,9 +195,9 @@
                 <i class="fa-solid fa-copy sm:mr-1.5"></i>
                 <span class="hidden md:inline">Copy Teks</span>
             </button>
-            <button onclick="printNota()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs sm:text-sm p-1.5 sm:px-3 sm:py-2 rounded-lg transition flex items-center justify-center shadow-sm" title="Cetak A6">
+            <button onclick="printNota()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs sm:text-sm p-1.5 sm:px-3 sm:py-2 rounded-lg transition flex items-center justify-center shadow-sm" title="Cetak Nota">
                 <i class="fa-solid fa-print sm:mr-1.5"></i>
-                <span class="hidden md:inline">Cetak A6</span>
+                <span class="hidden md:inline">Cetak Nota</span>
             </button>
             <button onclick="resetTransaksi()" class="bg-gray-800 hover:bg-brand text-white font-semibold text-xs sm:text-sm p-1.5 sm:px-3 sm:py-2 rounded-lg transition flex items-center justify-center shadow-sm" title="Reset">
                 <i class="fa-solid fa-rotate-left sm:mr-1.5"></i>
@@ -432,7 +432,7 @@
                     <i class="fa-solid fa-clock-rotate-left text-amber-400 text-lg"></i>
                     <div>
                         <h3 class="font-extrabold text-sm sm:text-base leading-tight">Riwayat Transaksi & Arsip Nota</h3>
-                        <p class="text-[11px] text-gray-300">Tersinkron otomatis dengan Google Sheets • Cari, cetak ulang nota A6, atau lunasi DP</p>
+                        <p class="text-[11px] text-gray-300">Tersinkron otomatis dengan Google Sheets • Cari, cetak ulang nota, atau lunasi DP</p>
                     </div>
                 </div>
                 <button onclick="closeRiwayatModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
@@ -1585,7 +1585,7 @@
                     <div class="py-12 text-center text-gray-400 bg-gray-50 rounded-xl border border-dashed border-gray-300">
                         <i class="fa-solid fa-folder-open text-3xl mb-2"></i>
                         <p class="text-sm font-bold text-gray-600">Belum ada riwayat nota ditemukan</p>
-                        <p class="text-xs mt-1">Transaksi otomatis tersimpan saat Anda klik Simpan Nota, Cetak A6, atau Copy Teks.</p>
+                        <p class="text-xs mt-1">Transaksi otomatis tersimpan saat Anda klik Simpan Nota, Cetak, atau Copy Teks.</p>
                     </div>
                 `;
                 return;
@@ -1621,7 +1621,7 @@
                             <span class="text-[11px] text-gray-600 truncate">${itemPreview}</span>
                             <div class="flex items-center gap-1.5 shrink-0" onclick="event.stopPropagation()">
                                 ${isDP ? `<button onclick="lunasiTransaksiRiwayat('${tx.id}')" class="text-[11px] font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded-md transition">Lunasi</button>` : ''}
-                                <button onclick="muatNotaKeKasir('${tx.id}', true)" class="text-[11px] font-bold bg-gray-100 hover:bg-brand hover:text-white text-gray-800 px-2.5 py-1 rounded-md transition" title="Muat & Cetak Ulang A6">
+                                <button onclick="muatNotaKeKasir('${tx.id}', true)" class="text-[11px] font-bold bg-gray-100 hover:bg-brand hover:text-white text-gray-800 px-2.5 py-1 rounded-md transition" title="Muat & Cetak Ulang">
                                     <i class="fa-solid fa-print mr-1"></i>Cetak Ulang
                                 </button>
                             </div>
@@ -1719,7 +1719,7 @@
                         </button>
                     ` : ''}
                     <button onclick="muatNotaKeKasir('${tx.id}', true)" class="col-span-2 bg-brand hover:bg-gray-800 text-white font-bold py-2.5 px-3 rounded-lg text-xs transition flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-print"></i> Muat ke Struk & Cetak Ulang A6
+                        <i class="fa-solid fa-print"></i> Muat ke Struk & Cetak Ulang
                     </button>
                     <button onclick="muatNotaKeKasir('${tx.id}', false)" class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 font-bold py-2 px-3 rounded-lg text-xs transition flex items-center justify-center gap-1.5">
                         <i class="fa-solid fa-pen-to-square"></i> Muat ke Preview
